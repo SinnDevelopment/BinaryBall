@@ -13,11 +13,11 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
         
         float horizontalMove = Input.GetAxis("Horizontal");
         float verticalMove = Input.GetAxis("Vertical");
-  
-        Vector3 move = new Vector3(horizontalMove, 0.0f, verticalMove);
-        //jump = Vector3.up * (jumpspeed * Time.smoothDeltaTime);
+        float jumpMove = Input.GetAxis("Jump");
+        Vector3 move = new Vector3(horizontalMove,jumpMove, verticalMove);
+        
 
-        rigidbody.AddForce(move);
-    //    rigidbody.AddForce(jump * jumpspeed * Time.deltaTime);
+        rigidbody.AddForce(move *speed * Time.deltaTime);
+   
 	}
 }
