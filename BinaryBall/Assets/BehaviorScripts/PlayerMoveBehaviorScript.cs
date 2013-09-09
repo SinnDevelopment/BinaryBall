@@ -3,9 +3,24 @@ using System.Collections;
 
 public class PlayerMoveBehaviorScript : MonoBehaviour 
 {
+    
     public float speed = 100;
-	
+    public Vector3 origin;
+    void Start()
+    {
+        origin = new Vector3(0, 0, 0);
+        
+    }
 	// Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKey("escape"))
+        {
+                      
+                transform.position = origin;
+            
+        }
+    }
 	void FixedUpdate () 
     {
         
