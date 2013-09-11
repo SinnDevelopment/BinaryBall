@@ -5,6 +5,7 @@ public class CameraBehaviourScript : MonoBehaviour
 {
     public GameObject Player;
     private Vector3 offset;
+    
 	// Use this for initialization
 	void Start ()
     {
@@ -15,9 +16,15 @@ public class CameraBehaviourScript : MonoBehaviour
   
     void Update()
     {
+       
+        //transform.LookAt(Player.transform);
     }
 	void LateUpdate () 
     {
         transform.position = Player.transform.position + offset;
+        transform.LookAt(Player.transform);
+       // transform.rotation.Set(0, Player.transform.rotation.eulerAngles.y, 0, 0);
+        
+        
 	}
 }

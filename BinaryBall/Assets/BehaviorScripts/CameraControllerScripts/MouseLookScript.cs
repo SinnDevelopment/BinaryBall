@@ -12,11 +12,12 @@ public class MouseLookScript : MonoBehaviour
     public float minY = -60;
     public float maxY = 60;
     float rotationY = 0;
+    public Transform target;
 
-	// Update is called once per frame
-	void Update () 
+	// Update is called once per frame 
+	void LateUpdate ()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKey("left ctrl"))
         {
             if (axes == RotationAxes.MouseXandY)
             {
@@ -28,7 +29,10 @@ public class MouseLookScript : MonoBehaviour
             }
             else if (axes == RotationAxes.MouseX)
             {
-                transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
+                //transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0 , Space.World);
+               //transform.RotateAround(PlayerMoveBehaviorScript.location, Vector3.zero, 10f);
+                //transform.RotateAround(PlayerMoveBehaviorScript.location, Vector3.zero, 0);
+                transform.LookAt(target);
 
 
             }
@@ -43,6 +47,6 @@ public class MouseLookScript : MonoBehaviour
 	}
     void Start()
     {
-
+        
     }
 }
