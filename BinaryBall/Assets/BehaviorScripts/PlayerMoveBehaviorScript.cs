@@ -10,7 +10,7 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
     void Start()
     {
         count = 0;
-        origin = new Vector3(0, 0, 0);
+        origin = new Vector3(-8.94f,6.26f, 38.48f);
         rigidbody.drag = 0.1f;
         location = rigidbody.position;
     }
@@ -30,9 +30,6 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
     }
 	void FixedUpdate () 
     {
-        
-       
-        
         float horizontalMove = Input.GetAxis("Horizontal");
         float verticalMove = Input.GetAxis("Vertical");
         float jumpMove = Input.GetAxis("Jump");
@@ -42,7 +39,7 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.W) && Input.GetKeyUp(KeyCode.A) && Input.GetKeyUp(KeyCode.S) && Input.GetKeyUp(KeyCode.D))
         {
-            rigidbody.drag = 10;
+            rigidbody.drag = 100;
         }
         else
         {
