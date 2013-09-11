@@ -5,9 +5,11 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
 {
     public static Vector3 location;
     public float speed = 100;
+    private int count;
     public Vector3 origin;
     void Start()
     {
+        count = 0;
         origin = new Vector3(0, 0, 0);
         rigidbody.drag = 0.1f;
         location = rigidbody.position;
@@ -21,7 +23,7 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
         }
         if (Input.GetKey("escape"))
         {
-                      
+            count = 0;
             transform.position = origin;
             
         }
@@ -52,7 +54,12 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Pickup"))
         {
+            count++;
             other.gameObject.SetActive(false);
+            if (count >= 16)
+            {
+
+            }
         }
     }
 }
