@@ -46,13 +46,6 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
         {
             rigidbody.drag = 0;
         }
-        if(Input.GetKey("q"))
-        {
-           
-            transform.Rotate(0,0.5f, 0);
-            
-
-        }
         
 	}
     void OnTriggerEnter(Collider other)

@@ -16,7 +16,14 @@ public class CameraBehaviourScript : MonoBehaviour
   
     void Update()
     {
-       
+        if (Input.GetKey("q"))
+        {
+
+        } 
+        if (Input.GetKey("e"))
+        {
+
+        }
         //transform.LookAt(Player.transform);
     }
 	void LateUpdate () 
