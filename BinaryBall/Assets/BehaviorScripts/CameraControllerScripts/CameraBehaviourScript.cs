@@ -13,16 +13,21 @@ public class CameraBehaviourScript : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-  
+   
+    
+        public Quaternion offsetRotation = new Quaternion(0,10,0,0);
+      //  offsetRotation.SetFromToRotation(offset, offsetRotation);
+
+    
     void Update()
     {
         if (Input.GetKey("q"))
         {
-
+            
         } 
         if (Input.GetKey("e"))
         {
-
+            transform.rotation = offsetRotation;
         }
         //transform.LookAt(Player.transform);
     }
