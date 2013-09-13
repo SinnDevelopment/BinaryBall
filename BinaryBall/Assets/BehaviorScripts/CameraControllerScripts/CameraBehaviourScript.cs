@@ -23,11 +23,12 @@ public class CameraBehaviourScript : MonoBehaviour
     {
         if (Input.GetKey("q"))
         {
-            
+            offset = Quaternion.AngleAxis(1, Vector3.up) * offset;
         } 
         if (Input.GetKey("e"))
         {
-            transform.rotation = offsetRotation;
+            offset = Quaternion.AngleAxis(-1, Vector3.up) * offset;
+            
         }
         //transform.LookAt(Player.transform);
     }

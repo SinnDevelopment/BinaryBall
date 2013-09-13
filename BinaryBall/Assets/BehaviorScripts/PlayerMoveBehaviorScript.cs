@@ -7,8 +7,10 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
     public float speed = 100;
     private int count;
     public Vector3 origin;
+    public GUIText countText;
     void Start()
     {
+        SetCountText();
         count = 0;
         origin = new Vector3(-8.94f,6.26f, 38.48f);
         rigidbody.drag = 0.1f;
@@ -23,8 +25,7 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
         }
         if (Input.GetKey("escape"))
         {
-            count = 0;
-            transform.position = origin;
+            ResetPosition();
             
         }
     }
@@ -52,11 +53,17 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
         if (other.gameObject.tag.Equals("Pickup"))
         {
             count++;
+            SetCountText();
             other.gameObject.SetActive(false);
-            if (count >= 16)
-            {
-
-            }
         }
+    }
+    void SetCountText()
+    {
+        countText.text = "Cubes Collected: " + count.ToString();
+    }
+    void ResetPosition()
+    {
+        rigidbody.position = origin;
+        rigidbody.rotation.Set(0, 0, 0, 0);
     }
 }
