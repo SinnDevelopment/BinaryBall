@@ -43,6 +43,10 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
         Vector3 move = new Vector3(horizontalMove,jumpMove, verticalMove);
 
         rigidbody.AddForce(move * speed * Time.deltaTime);
+        if (rigidbody.velocity.magnitude >speed)
+        {
+            rigidbody.AddForce(-move * speed * Time.deltaTime);
+        }
 
         if (Input.GetKeyUp(KeyCode.W) && Input.GetKeyUp(KeyCode.A) && Input.GetKeyUp(KeyCode.S) && Input.GetKeyUp(KeyCode.D))
         {
