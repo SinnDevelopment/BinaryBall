@@ -8,6 +8,7 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
     private int count;
     public Vector3 origin;
     public GUIText countText;
+
     void Start()
     {
         SetCountText();
@@ -28,7 +29,12 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
             ResetPosition();
             
         }
+        if (transform.position.z < -48)
+        {
+            transform.position.Set(transform.position.x, transform.position.y, -47);
+        }
     }
+
 	void FixedUpdate () 
     {
         float horizontalMove = Input.GetAxis("Horizontal");
@@ -55,6 +61,10 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
             count++;
             SetCountText();
             other.gameObject.SetActive(false);
+            if (count.Equals(16))
+            {
+                countText.text = " GAME OVER REFRESH PAGE TO PLAY AGAIN.";
+            }
         }
     }
     void SetCountText()

@@ -1,0 +1,20 @@
+Initialize engine version: 4.2.1f4 (4d30acc925c2)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 3000 (ID=0x116)
+    Vendor:   Intel
+    VRAM:     1488 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Jamie\Documents\GitHub\BinaryBall\BinaryBall\Build\Standalone\BinaryBall-PreAlpha0.1.3.4_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Jamie\Documents\GitHub\BinaryBall\BinaryBall\Build\Standalone\BinaryBall-PreAlpha0.1.3.4_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Jamie\Documents\GitHub\BinaryBall\BinaryBall\Build\Standalone\BinaryBall-PreAlpha0.1.3.4_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Jamie\Documents\GitHub\BinaryBall\BinaryBall\Build\Standalone\BinaryBall-PreAlpha0.1.3.4_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+- Completed reload, in  0.116 seconds
+desktop: 1600x900 40Hz; virtual: 3520x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+The referenced script on this Behaviour is missing!
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/Mono/MonoBehaviour.cpp Line: 1657)
+
