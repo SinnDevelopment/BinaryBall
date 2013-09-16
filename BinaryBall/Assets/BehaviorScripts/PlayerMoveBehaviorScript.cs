@@ -6,57 +6,35 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
     public static Vector3 location;
     public float speed = 100;
     private int count;
-    public Vector3 origin;
+    private Vector3 origin = new Vector3(-9.736831f, 5.166971f, 39.93442f);
     public GUIText countText;
 
     void Start()
     {
         SetCountText();
         count = 0;
-        origin = new Vector3(-8.94f,6.26f, 38.48f);
+        
         rigidbody.drag = 0.1f;
         location = rigidbody.position;
     }
 	// Update is called once per frame
     void Update()
     {
-        if (transform.position.y >= 15)
-        {
-            rigidbody.drag = 20;
-        }
-        if (Input.GetKey("escape"))
-        {
-            ResetPosition();
-            
-        }
-        if (transform.position.z < -48)
-        {
-            transform.position.Set(transform.position.x, transform.position.y, -47);
-        }
+       // Move();
+        
+        
     }
 
 	void FixedUpdate () 
     {
-        float horizontalMove = Input.GetAxis("Horizontal");
-        float verticalMove = Input.GetAxis("Vertical");
-        float jumpMove = Input.GetAxis("Jump");
-        Vector3 move = new Vector3(horizontalMove,jumpMove, verticalMove);
-
-        rigidbody.AddForce(move * speed * Time.deltaTime);
-        if (rigidbody.velocity.magnitude >speed)
+        if (networkView.isMine)
         {
-            rigidbody.AddForce(-move * speed * Time.deltaTime);
-        }
-
-        if (Input.GetKeyUp(KeyCode.W) && Input.GetKeyUp(KeyCode.A) && Input.GetKeyUp(KeyCode.S) && Input.GetKeyUp(KeyCode.D))
-        {
-            rigidbody.drag = 100;
+            Move();
         }
         else
         {
-            rigidbody.drag = 0;
+            enabled = false;
         }
-        
 	}
     void OnTriggerEnter(Collider other)
     {
@@ -79,5 +57,24 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
     {
         rigidbody.position = origin;
         rigidbody.rotation.Set(0, 0, 0, 0);
+    }
+    private void Move()
+    {
+        float horizontalMove = Input.GetAxis("Horizontal");
+        float verticalMove = Input.GetAxis("Vertical");
+        float jumpMove = Input.GetAxis("Jump");
+        Vector3 move = new Vector3(horizontalMove, jumpMove, verticalMove);
+
+        rigidbody.AddForce(move * speed * Time.deltaTime);
+        if (rigidbody.velocity.magnitude > speed)
+        {
+            rigidbody.AddForce(-move * speed * Time.deltaTime);
+        }
+
+
+        else
+        {
+            rigidbody.drag = 0;
+        }
     }
 }

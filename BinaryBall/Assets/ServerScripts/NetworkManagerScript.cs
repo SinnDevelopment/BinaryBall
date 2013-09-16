@@ -14,14 +14,17 @@ public class NetworkManagerScript : MonoBehaviour
     private HostData[] hostData;
     #endregion
     #region Public Variables
+    public GameObject playerPrefab;
+    public Transform spawnObject;
+    public Camera mainCamera;
     float buttonX;
     float buttonY;
     float buttonW;
     float buttonH;
-    static string serverName = "";
-    static string game = "";
-    static string motd = "";
-    static int port = 25000;
+    public string serverName = "";
+    public string game = "";
+    public string motd = "";
+    public int port = 25000;
     bool refreshing = false;
     #endregion
     #region Private Methods and Functions
@@ -54,7 +57,7 @@ public class NetworkManagerScript : MonoBehaviour
 	}
     void Update()
     {
-        while (refreshing)
+        if (refreshing)
         {
             if (MasterServer.PollHostList().Length > 0)
             {
@@ -63,6 +66,22 @@ public class NetworkManagerScript : MonoBehaviour
                 hostData = MasterServer.PollHostList();
             }
         }
+    }
+    void OnServerInitialized()
+    {
+        Debug.Log("[INFO] SERVER INIT COMPLETE");
+        SpawnPlayer();
+    }
+    void OnConnectedToServer()
+    {
+        SpawnPlayer();
+    }
+    void SpawnPlayer()
+    {
+        //Network.Instantiate(mainCamera, mainCamera.transform.position, Quaternion.identity, 0);
+       
+            Network.Instantiate(playerPrefab, spawnObject.position, Quaternion.identity, 0);
+       
     }
     void StartServer()
     {
@@ -75,6 +94,11 @@ public class NetworkManagerScript : MonoBehaviour
         if (msevent.Equals(MasterServerEvent.RegistrationSucceeded))
         {
             Debug.Log("Server Registered Successfully");
+            
+        }
+        if (msevent.Equals(MasterServerEvent.RegistrationFailedNoServer))
+        {
+            Debug.Log("No Server to register... please tell jamiesinn about this");
         }
         
     }
@@ -86,28 +110,39 @@ public class NetworkManagerScript : MonoBehaviour
                 
     }
 
-   
-    void OnGui()
+
+    void OnGUI()
     {
-        if (GUI.Button(new Rect(buttonX, buttonY, buttonW, buttonH), "Start LAN Server"))
-        {
-            Debug.Log("[INFO] LAN SERVER STARTED...");
-
-        }
-        if (GUI.Button(new Rect(buttonX, buttonY, buttonW, buttonH), "Refresh LAN Hosts"))
+        if (!Network.isClient && !Network.isServer)
         {
 
-            Debug.Log("[INFO] REFRESHING LOCAL NETWORK SERVER LIST...");
 
-        }
-        
-       
-            for (int i = 0; i > hostData.Length; i++)
+            if (GUI.Button(new Rect(buttonX, buttonY, buttonW, buttonH), "Start LAN Server"))
             {
-                GUI.Button(new Rect(buttonX * 1.5f + buttonW, buttonY * 1.2f + (buttonH * i), buttonW * 3, buttonH * .5f), hostData[i].gameName);
+                Debug.Log("[INFO] LAN SERVER STARTED...");
+                StartServer();
+
             }
-       
+            if (GUI.Button(new Rect(buttonX, buttonY *1.2f + buttonH, buttonW, buttonH), "Refresh LAN Hosts"))
+            {
+                RefreshHostList();
+                Debug.Log("[INFO] REFRESHING LOCAL NETWORK SERVER LIST...");
+
+            }
+
+            if (hostData != null)
+            {
+                for (int i = 0; i > hostData.Length; i++)
+                {
+                    if (GUI.Button(new Rect(buttonX * 1.5f + buttonW, buttonY * 1.2f + (buttonH * i), buttonW * 3, buttonH * .5f), hostData[i].gameName))
+                    {
+                        Network.Connect("localhost");
+                    }
+                }
+            }
+        }
     }
+ 
 
     #endregion
 }
