@@ -15,6 +15,7 @@ public class NetworkManagerScript : MonoBehaviour
     #endregion
     #region Public Variables
     public GameObject playerPrefab;
+    public Vector3 cameraoffset;
     public Transform spawnObject;
     public Camera mainCamera;
     float buttonX;
@@ -54,9 +55,11 @@ public class NetworkManagerScript : MonoBehaviour
         buttonW = Screen.width * 0.1f;
         buttonX = Screen.width * 0.05f;
         buttonY = Screen.width * 0.05f;
+        //playerPrefab = CameraBehaviourScript.targetplayer;
 	}
     void Update()
     {
+        cameraoffset = mainCamera.transform.position;
         if (refreshing)
         {
             if (MasterServer.PollHostList().Length > 0)
@@ -78,7 +81,8 @@ public class NetworkManagerScript : MonoBehaviour
     }
     void SpawnPlayer()
     {
-        //Network.Instantiate(mainCamera, mainCamera.transform.position, Quaternion.identity, 0);
+
+        Network.Instantiate(mainCamera, playerPrefab.transform.position +cameraoffset , Quaternion.identity, 1);
        
             Network.Instantiate(playerPrefab, spawnObject.position, Quaternion.identity, 0);
        
@@ -96,10 +100,7 @@ public class NetworkManagerScript : MonoBehaviour
             Debug.Log("Server Registered Successfully");
             
         }
-        if (msevent.Equals(MasterServerEvent.RegistrationFailedNoServer))
-        {
-            Debug.Log("No Server to register... please tell jamiesinn about this");
-        }
+        
         
     }
 
@@ -137,6 +138,7 @@ public class NetworkManagerScript : MonoBehaviour
                     if (GUI.Button(new Rect(buttonX * 1.5f + buttonW, buttonY * 1.2f + (buttonH * i), buttonW * 3, buttonH * .5f), hostData[i].gameName))
                     {
                         Network.Connect("localhost");
+                        Debug.Log(Network.connections);
                     }
                 }
             }

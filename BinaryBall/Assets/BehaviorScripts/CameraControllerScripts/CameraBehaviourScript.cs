@@ -5,11 +5,13 @@ public class CameraBehaviourScript : MonoBehaviour
 {
     public GameObject Player;
     private Vector3 offset;
+    public static GameObject targetplayer;
     
 	// Use this for initialization
 	void Start ()
     {
         offset = transform.position;
+        targetplayer = Player;
 	}
 	
 	// Update is called once per frame
