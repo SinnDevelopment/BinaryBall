@@ -9,7 +9,7 @@ public class NetworkManagerScript : MonoBehaviour
    
     #region Private Variables
     
-    private static int maxPlayers = 4;
+    private static int maxPlayers = 40;
     private static bool paidVersion = false;
     private HostData[] hostData;
     #endregion
@@ -82,9 +82,9 @@ public class NetworkManagerScript : MonoBehaviour
     void SpawnPlayer()
     {
 
-        Network.Instantiate(mainCamera, playerPrefab.transform.position +cameraoffset , Quaternion.identity, 1);
-       
-            Network.Instantiate(playerPrefab, spawnObject.position, Quaternion.identity, 0);
+       // Network.Instantiate(mainCamera, playerPrefab.transform.position +cameraoffset , Quaternion.identity, 1);
+
+        Network.Instantiate(playerPrefab, Vector3.up * 5, Quaternion.identity, 0);
        
     }
     void StartServer()
@@ -100,6 +100,8 @@ public class NetworkManagerScript : MonoBehaviour
             Debug.Log("Server Registered Successfully");
             
         }
+        if (msevent == MasterServerEvent.HostListReceived)
+            hostData = MasterServer.PollHostList();
         
         
     }
@@ -116,33 +118,32 @@ public class NetworkManagerScript : MonoBehaviour
     {
         if (!Network.isClient && !Network.isServer)
         {
-
-
-            if (GUI.Button(new Rect(buttonX, buttonY, buttonW, buttonH), "Start LAN Server"))
+            if (GUI.Button(new Rect(100, 100, 250, 100), "Start Server"))
             {
-                Debug.Log("[INFO] LAN SERVER STARTED...");
                 StartServer();
-
             }
-            if (GUI.Button(new Rect(buttonX, buttonY *1.2f + buttonH, buttonW, buttonH), "Refresh LAN Hosts"))
+
+            if (GUI.Button(new Rect(100, 250, 250, 100), "Refresh Hosts"))
             {
                 RefreshHostList();
-                Debug.Log("[INFO] REFRESHING LOCAL NETWORK SERVER LIST...");
 
             }
 
             if (hostData != null)
             {
-                for (int i = 0; i > hostData.Length; i++)
+                for (int i = 0; i < hostData.Length; i++)
                 {
-                    if (GUI.Button(new Rect(buttonX * 1.5f + buttonW, buttonY * 1.2f + (buttonH * i), buttonW * 3, buttonH * .5f), hostData[i].gameName))
+                    if (GUI.Button(new Rect(400, 100 + (110 * i), 300, 100), hostData[i].gameName))
                     {
-                        Network.Connect("localhost");
-                        Debug.Log(Network.connections);
+                        JoinServer(hostData[i]);
                     }
                 }
             }
         }
+    }
+    private void JoinServer(HostData hostData)
+    {
+        Network.Connect(hostData);
     }
  
 
