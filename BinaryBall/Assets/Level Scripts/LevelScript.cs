@@ -3,18 +3,27 @@ using System.Collections;
 
 public class LevelScript : MonoBehaviour
 {
-    /// <summary>
-    /// Attach this to the camera of each scene. And increase the levelcode sequentially based upon what sequence you want them in
-    /// </summary>
+    
     public int LevelCode;
-    public int GetCurrentLevelCode()
+    public string LevelName;
+    
+    public static int GetCurrentLevelCode()
     {
-        if (LevelCode != null)
+        LevelScript lvl = new LevelScript();
+        if (lvl.LevelCode != null)
         {
-            return LevelCode;
+            return lvl.LevelCode;
         }
         else
             return 0;
+    }
+    public static string GetCurrentLevelName()
+    {
+        LevelScript lvl = new LevelScript();
+        if (lvl.LevelName != null)
+            return lvl.LevelName;
+        else
+            return "MainMenu";
     }
 	
 }

@@ -32,7 +32,8 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
             if (count.Equals(16))
             {
                 countText.text = " Next Level Loading...";
-                Application.LoadLevel(2);
+
+                Application.LoadLevel(0);//LevelScript.GetCurrentLevelCode()+1);
 
             }
         }

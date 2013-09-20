@@ -6,19 +6,19 @@ public class CameraBehaviourScript : MonoBehaviour
     public GameObject Player;
     private Vector3 offset;
     public static GameObject targetplayer;
-    
-	// Use this for initialization
+    public Quaternion offsetRotation = new Quaternion(0, 10, 0, 0);
+	
 	void Start ()
     {
         offset = transform.position;
         targetplayer = Player;
 	}
 	
-	// Update is called once per frame
+	
    
     
-        public Quaternion offsetRotation = new Quaternion(0,10,0,0);
-      //  offsetRotation.SetFromToRotation(offset, offsetRotation);
+   
+      
 
     
     void Update()
@@ -32,13 +32,13 @@ public class CameraBehaviourScript : MonoBehaviour
             offset = Quaternion.AngleAxis(-1, Vector3.up) * offset;
             
         }
-        //transform.LookAt(Player.transform);
+        
     }
 	void LateUpdate () 
     {
         transform.position = Player.transform.position + offset;
         transform.LookAt(Player.transform);
-       // transform.rotation.Set(0, Player.transform.rotation.eulerAngles.y, 0, 0);
+       
         
         
 	}

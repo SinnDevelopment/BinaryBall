@@ -45,11 +45,11 @@ public class Main : MonoBehaviour
             switch (number)
             {
                 case 1:
-                    Application.LoadLevel(1);
+                    Application.LoadLevel(LevelScript.GetCurrentLevelCode()+1);
                     break;
                 case 2:
                     // About Clicked - add link to website info page here.
-                    Application.OpenURL("http://jamiesinn.ca/binaryball");
+                    Application.OpenURL("http://binaryball.com/about");
                     break;
                 case 3:
                     Application.Quit();
