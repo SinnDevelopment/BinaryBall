@@ -24,19 +24,19 @@ public class Main : MonoBehaviour
                 quit.renderer.material.color = Color.white;
                 break;
             case 1:
-                playgame.renderer.material.color = Color.red;
+                playgame.renderer.material.color = Color.green;
                 options.renderer.material.color = Color.white;
                 quit.renderer.material.color = Color.white;
                 break;
             case 2:
                 playgame.renderer.material.color = Color.white;
-                options.renderer.material.color = Color.red;
+                options.renderer.material.color = Color.green;
                 quit.renderer.material.color = Color.white;
                 break;
             case 3:
                 playgame.renderer.material.color = Color.white;
                 options.renderer.material.color = Color.white;
-                quit.renderer.material.color = Color.red;
+                quit.renderer.material.color = Color.green;
                 break;
         }
 
