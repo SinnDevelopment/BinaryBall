@@ -17,34 +17,14 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
         rigidbody.drag = 0.1f;
         location = rigidbody.position;
     }
-	// Update is called once per frame
-    void Update()
-    {
-       // Move();
-        
-        
-    }
-    void InputMovement()
-    {
-        if (Input.GetKey(KeyCode.W))
-            rigidbody.MovePosition(rigidbody.position + Vector3.forward * speed * Time.deltaTime);
-
-        if (Input.GetKey(KeyCode.S))
-            rigidbody.MovePosition(rigidbody.position - Vector3.forward * speed * Time.deltaTime);
-
-        if (Input.GetKey(KeyCode.D))
-            rigidbody.MovePosition(rigidbody.position + Vector3.right * speed * Time.deltaTime);
-
-        if (Input.GetKey(KeyCode.A))
-            rigidbody.MovePosition(rigidbody.position - Vector3.right * speed * Time.deltaTime);
-    }
+    
 
 	void FixedUpdate () 
     {
-        if (networkView.isMine)
-        {
-            InputMovement();
-        }
+        
+        
+            Move();
+        
        
 	}
     void OnTriggerEnter(Collider other)
