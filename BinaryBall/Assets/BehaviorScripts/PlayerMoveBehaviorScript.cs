@@ -12,8 +12,7 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
     void Start()
     {
         SetCountText();
-        count = 0;
-        
+        count = 0;       
         rigidbody.drag = 0.1f;
         location = rigidbody.position;
     }
@@ -21,11 +20,7 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
 
 	void FixedUpdate () 
     {
-        
-        
             Move();
-        
-       
 	}
     void OnTriggerEnter(Collider other)
     {
@@ -36,7 +31,9 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
             other.gameObject.SetActive(false);
             if (count.Equals(16))
             {
-                countText.text = " GAME OVER REFRESH PAGE TO PLAY AGAIN.";
+                countText.text = " Next Level Loading...";
+                Application.LoadLevel(2);
+
             }
         }
     }
