@@ -7,14 +7,14 @@ public class Main : MonoBehaviour
 
     private GameObject playgame, options, quit;
 
-    private void Start()
+    void Start()
     {
         playgame = GameObject.Find("/Text/Play");
         options = GameObject.Find("/Text/About");
         quit = GameObject.Find("/Text/Quit");
     }
 
-    private void Update()
+    void Update()
     {
         switch(number)
         {
