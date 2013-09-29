@@ -3,6 +3,11 @@ using System.Collections;
 
 public class PlayerMoveBehaviorScript : MonoBehaviour 
 {
+    CharacterController controller;// = GetComponent<CharacterController>();
+
+
+
+
     public static Vector3 location;
     public float speed = 100;
     private int count;
@@ -11,6 +16,7 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
 
     void Start()
     {
+        
         SetCountText();
         count = 0;       
         rigidbody.drag = 0.1f;

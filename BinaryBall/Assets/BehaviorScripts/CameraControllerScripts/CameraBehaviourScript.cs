@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CameraBehaviourScript : MonoBehaviour 
 {
+
     public GameObject Player;
     private Vector3 offset;
     public static GameObject targetplayer;
@@ -14,13 +15,6 @@ public class CameraBehaviourScript : MonoBehaviour
         targetplayer = Player;
 	}
 	
-	
-   
-    
-   
-      
-
-    
     void Update()
     {
         if (Input.GetKey("q"))
