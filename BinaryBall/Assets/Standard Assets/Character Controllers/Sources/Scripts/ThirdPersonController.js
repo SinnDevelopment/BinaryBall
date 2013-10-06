@@ -13,7 +13,7 @@ public var runMaxAnimationSpeed : float = 1.0;
 public var jumpAnimationSpeed : float = 1.15;
 public var landAnimationSpeed : float = 1.0;
 
-private var _animation : Animation;
+
 
 enum CharacterState {
 	Idle = 0,
@@ -50,6 +50,10 @@ private var jumpRepeatTime = 0.05;
 private var jumpTimeout = 0.15;
 private var groundedTimeout = 0.25;
 
+private var count: int;
+public var countText : GUIText;
+
+private var _animation : Animation;
 // The camera doesnt start following the target immediately but waits for a split second to avoid too much waving around.
 private var lockCameraTimer = 0.0;
 
@@ -437,4 +441,3 @@ function Reset ()
 {
 	gameObject.tag = "Player";
 }
-

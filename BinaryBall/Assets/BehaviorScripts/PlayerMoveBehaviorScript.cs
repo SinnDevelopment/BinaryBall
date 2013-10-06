@@ -26,7 +26,7 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
 
 	void FixedUpdate () 
     {
-            Move();
+        Move();
 	}
     void OnTriggerEnter(Collider other)
     {
@@ -63,4 +63,5 @@ public class PlayerMoveBehaviorScript : MonoBehaviour
         rigidbody.AddForce(move * speed * Time.deltaTime);
         
     }
+    
 }
