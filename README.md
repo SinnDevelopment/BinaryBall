@@ -1,7 +1,11 @@
 BinaryBall
+
+Now open source under MIT License
 ==========
 
 3D Adventure / Platformer Game
+
+Please fork and make your own versions following the license
 
 Branch Descriptions:
 
@@ -17,6 +21,6 @@ Alpha: Given to select people to test and give feedback on design, features, and
 
 Pre-Beta: Posted on my website for the public to play, and give feedback.
 
-Beta: Game is released on Steam Greenlight.
+Beta: Fully publicized
 
-Release: Game is (hopefully) released on Steam, and as a downloadable exe.
+Release: Done :D
