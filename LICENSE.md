@@ -1,7 +1,7 @@
 Copyright (c) 2013, James Sinn
 All rights reserved.
 
-Redistribution in binary forms, with or without
+Redistribution in binary forms or source form, with or without
 modification, are permitted provided that the following conditions are met:
 1. Redistributions of source code must retain the above copyright
    notice, this list of conditions and the following disclaimer.
@@ -14,16 +14,12 @@ modification, are permitted provided that the following conditions are met:
 4. Neither the name of James Sinn nor the
    names of its contributors may be used to endorse or promote products
    derived from this software without specific prior written permission.
-   
-Redistribution of decompiled source code is not allowed under any conditions.
+5. You must give credit to James Sinn as the original author for this game.
 
-Decompiling the source for personal use with or without Modification is permitted provided the
-following conditions are met:
-1. You must send the copyright holder(James Sinn) an email to license@jamiesinn.ca 
-   detailing your reason and intent.
-2. You do not provide decompiled source to anyone.
-3. The source does not leave the computer it was decompiled on.
-4. You do not post the source anywhere that it could be found(eg. Internet, Private Network, etc)
+   
+Redistribution of decompiled source code is allowed.
+
+Decompiling the source for personal use with or without Modification is permitted.
 
    
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
