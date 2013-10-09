@@ -3,6 +3,11 @@ BinaryBall
 Now open source under MIT License
 ==========
 
+Note for anyone forking this repo, it MUST remain open source, meaning you cannot make it closed source by forking, then setting as private.
+Doing so would infringe on the license
+
+
+
 3D Adventure / Platformer Game
 
 Please fork and make your own versions following the license
